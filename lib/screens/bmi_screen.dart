@@ -38,8 +38,9 @@ class _BMIScreenState extends State<BMIScreen> {
   String get category => bmiCategory(bmi);
 
   Future<void> _analyzeAI() async {
-    setState(() => loading = true);
+  setState(() => loading = true);
 
+  try {
     final json = await AIService.analyzeHealth(
       age: age.toInt(),
       gender: gender,
@@ -54,9 +55,16 @@ class _BMIScreenState extends State<BMIScreen> {
 
     setState(() {
       aiResult = HealthAIResult.fromJson(json);
-      loading = false;
     });
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Błąd AI: $e')),
+    );
+  } finally {
+    setState(() => loading = false);
   }
+}
+
 
   Future<void> _save() async {
     final prefs = await SharedPreferences.getInstance();
