@@ -29,6 +29,7 @@ class AIService {
     required double bmr,
     required double tdee,
     required String goal,
+    http.Client? client,
   }) async {
     final prompt = _buildPrompt(
       age: age,
@@ -42,7 +43,9 @@ class AIService {
       goal: goal,
     );
 
-    final response = await http.post(
+    final httpClient = client ?? http.Client();
+
+    final response = await httpClient.post(
       Uri.parse(_endpoint),
       headers: {
         'Authorization': 'Bearer $_apiKey',

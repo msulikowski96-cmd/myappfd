@@ -57,6 +57,7 @@ class _BMIScreenState extends State<BMIScreen> {
       aiResult = HealthAIResult.fromJson(json);
     });
   } catch (e) {
+    if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Błąd AI: $e')),
     );
