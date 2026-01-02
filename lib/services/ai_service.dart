@@ -14,7 +14,7 @@ class AIService {
   static const String _endpoint =
       'https://openrouter.ai/api/v1/chat/completions';
 
-  static const String _model = 'openai/gpt-4o-mini';
+  static const String _model = 'qwen/qwen-2.5-vl-7b-instruct:free';
 
   /// ===============================
   /// PUBLIC API

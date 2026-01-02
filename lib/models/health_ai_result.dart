@@ -24,9 +24,9 @@ class HealthAIResult {
       summary: json['summary'],
       interpretation: Map<String, dynamic>.from(json['interpretation']),
       recommendations: {
-        "nutrition": List<String>.from(json['recommendations']['nutrition']),
-        "activity": List<String>.from(json['recommendations']['activity']),
-        "lifestyle": List<String>.from(json['recommendations']['lifestyle']),
+        'nutrition': List<String>.from(json['recommendations']['nutrition']),
+        'activity': List<String>.from(json['recommendations']['activity']),
+        'lifestyle': List<String>.from(json['recommendations']['lifestyle']),
       },
       warnings: List<String>.from(json['warnings']),
       nextSteps: List<String>.from(json['next_steps']),
